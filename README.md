@@ -28,3 +28,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Decision Log
 
 In this section you can find some explanation on the decisions during the process.
+
+### Testing framework
+
+I chose Jest, because it has assertions and mocking tools like Sinon built in, it's popular nowadays, which means that it is easy to pick up for other developers as well and there is loads of guides/tutorials available.

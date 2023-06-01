@@ -1,9 +1,9 @@
-import './globals.css'
+import './globals.css';
 
 export const metadata = {
   title: 'React Routing Assessment',
   description: 'Route away.',
-}
+};
 
 export default function RootLayout({
   children,
@@ -14,5 +14,5 @@ export default function RootLayout({
     <html lang="en">
       <body>{children}</body>
     </html>
-  )
+  );
 }
