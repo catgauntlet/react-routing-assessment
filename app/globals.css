@@ -1,1 +1,44 @@
-:root {}
+:root {
+  --font-size-xs: 0.75rem;
+  --font-size-s: 0.875rem;
+  --font-size-m: 1.25rem;
+
+  --spacer: 0.5rem;
+
+  --color-background: #FFFFFF;
+  --color-brand: #000000;
+  --color-brand-grey: #999999;
+
+  --color-text-primary: var(--color-brand);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  color: var(--color-text-primary);
+  background: var(--color-background);
+}
+
+h1, h2, span, p {
+  font-family: var(--font-main);
+  padding: var(--spacer) 0;
+}
+
+h1 {
+  font-size: var(--font-size-m);
+}
+
+h2 {
+  font-size: var(--font-size-s);
+}
+
+span, p {
+  font-size: var(--font-size-xs);
+}

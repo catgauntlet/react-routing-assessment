@@ -1,6 +1,6 @@
 
 describe("Login screen - Happy flows", () => {
-    test('When I fill in the correct credentials, I am redirected to the authenticated dashboard and my login token is saved', () => {
+    test('When I fill in the correct credentials, I am redirected to the authenticated page I was trying to reach and my login token is saved', () => {
 
     });
 });

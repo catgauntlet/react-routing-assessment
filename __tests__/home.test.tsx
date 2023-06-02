@@ -1,6 +1,16 @@
+
+import { render, screen } from '@testing-library/react'
+import HomePage from '../app/home/page';
+
 describe("Home screen - Happy flows", () => {
     test('When I load the homepage component when I am not logged in, I expect to see the welcome text', () => {
+        render(<HomePage />)
 
+        const heading = screen.getByRole('heading', {
+          name: /Home/i,
+        })
+    
+        expect(heading).toBeInTheDocument()
     });
     
     test('When I load the homepage component when I am logged in, I expect to see the welcome text', () => {
