@@ -38,3 +38,7 @@ Next to the default airbnb + react + next recommended linting sets, I modified o
 ### Testing framework
 
 I chose Jest, because it has assertions and mocking tools like Sinon built in, it's popular nowadays, which means that it is easy to pick up for other developers as well and there is loads of guides/tutorials available.
+
+### Git hooks
+
+I opted to use Husky for pre-commit linting and pre-push test running, since it is still the most used git hooks library around. I doubted on using Lefthook, which is supposed to be faster, but the support and usage of Husky is at this point still much better online.
