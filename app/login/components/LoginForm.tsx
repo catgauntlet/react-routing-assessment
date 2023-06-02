@@ -1,8 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function LoginForm() {
+  const router = useRouter();
   const [loginLoading, setLoginLoading] = useState(false);
   const [loginError, setLoginError] = useState(null);
 
@@ -24,6 +26,8 @@ export default function LoginForm() {
       }).then((data: any) => {
         if (requestResultedInErrorCode) {
           setLoginError(data.error);
+        } else {
+          router.push('/dashboard');
         }
       })
       .catch((error) => {
@@ -33,7 +37,7 @@ export default function LoginForm() {
       });
   };
 
-  const loginFormSubmit = () => {
+  const onLoginFormSubmit = () => {
     const username = document.querySelector('#username').value;
     const password = document.querySelector('#password').value;
 
@@ -58,7 +62,7 @@ export default function LoginForm() {
         </span>
         )
       }
-      <button type="submit" onClick={() => loginFormSubmit()} disabled={loginLoading}>Submit</button>
+      <button type="submit" onClick={() => onLoginFormSubmit()} disabled={loginLoading}>Submit</button>
     </form>
   );
 }

@@ -12,10 +12,20 @@ export async function POST(request: Request) {
   const requestBody = await request.json() as LoginRequestBody;
 
   if (requestBody.username !== 'uncinc' || requestBody.password !== 'letmein') {
-    return NextResponse.json({ error: 'INVALID_CREDENTIALS' }, { status: 400 });
+    const response = NextResponse.json({ authenticated: false, error: 'INVALID_CREDENTIALS' }, { status: 400 });
+    response.cookies.delete('authentication');
+    return response;
   }
 
-  return NextResponse.json({ token: 'THIS_IS_NOT_A_REAL_TOKEN' });
+  const response = NextResponse.json({ authenticated: true });
+
+  response.cookies.set({
+    name: 'authentication',
+    value: 'THIS_IS_NOT_A_REAL_TOKEN',
+    httpOnly: true,
+  });
+
+  return response;
 }
 
 export default POST;
