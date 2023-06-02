@@ -1,6 +1,6 @@
 import React from 'react';
+import guardAuthenticatedRoute from '@/app/utils/authenticated-route.ts';
 import styles from './page.module.css';
-import guardAuthenticatedRoute from '@/app/utils/authenticated-route';
 
 export default function DashboardPage() {
   guardAuthenticatedRoute();
