@@ -2,13 +2,14 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useAuthenticationContext } from '@/app/context/authentication.tsx';
 import styles from './Navigation.module.css';
 
 export default function Navigation() {
   const router = useRouter();
+  const { authenticated, setAuthenticated } = useAuthenticationContext();
   const [logoutLoading, setLogoutLoading] = useState(false);
   const [authenticationLoading, setAuthenticationLoading] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const onLogOutClicked = () => {
     setLogoutLoading(true);
@@ -32,12 +33,12 @@ export default function Navigation() {
       .then((response) => response.json())
       .then((data) => {
         setAuthenticationLoading(false);
-        setIsAuthenticated(data.authenticated);
+        setAuthenticated(data.authenticated);
       })
       .catch((error) => {
         console.warn(error);
         setAuthenticationLoading(false);
-        setIsAuthenticated(false);
+        setAuthenticated(false);
       });
   };
 
@@ -47,11 +48,11 @@ export default function Navigation() {
     <nav className={styles.navigation}>
       <section className={styles.menuItems}>
         <a href="/">Home</a>
-        {(isAuthenticated && !authenticationLoading) && <a href="/dashboard">Dashboard</a>}
+        {(authenticated && !authenticationLoading) && <a href="/dashboard">Dashboard</a>}
       </section>
       <section className={styles.authentication}>
-        {(!isAuthenticated && !authenticationLoading) && <button type="button" onClick={onLoginClicked}>Log in</button>}
-        {(isAuthenticated && !authenticationLoading) && <button type="button" onClick={onLogOutClicked} disabled={logoutLoading}>Log out</button>}
+        {(!authenticated && !authenticationLoading) && <button type="button" onClick={onLoginClicked}>Log in</button>}
+        {(authenticated && !authenticationLoading) && <button type="button" onClick={onLogOutClicked} disabled={logoutLoading}>Log out</button>}
       </section>
     </nav>
   );

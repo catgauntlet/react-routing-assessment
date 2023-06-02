@@ -1,6 +1,7 @@
 import React from 'react';
 import './globals.css';
 import Navigation from './components/Navigation/Navigation.tsx';
+import { AuthenticationContextProvider } from './context/authentication.tsx';
 
 export const metadata = {
   title: 'React Routing Assessment',
@@ -15,10 +16,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navigation />
-        <main>
-          {children}
-        </main>
+        <AuthenticationContextProvider>
+          <Navigation />
+          <main>
+            {children}
+          </main>
+        </AuthenticationContextProvider>
       </body>
     </html>
   );
