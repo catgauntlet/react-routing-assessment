@@ -1,17 +1,21 @@
 'use client';
 
 import React, {
-  createContext, useMemo, useContext, Dispatch, SetStateAction, useState,
+  createContext, useMemo, useEffect, useContext, Dispatch, SetStateAction, useState,
 } from 'react';
 
 interface ContextProps {
   authenticated: boolean,
   setAuthenticated: Dispatch<SetStateAction<boolean>>,
+  authenticationLoading: boolean,
+  setAuthenticationLoading: Dispatch<SetStateAction<boolean>>,
 }
 
 const AuthenticationContext = createContext<ContextProps>({
   authenticated: false,
+  authenticationLoading: false,
   setAuthenticated: (): boolean => false,
+  setAuthenticationLoading: (): boolean => false,
 });
 
 /**
@@ -20,8 +24,40 @@ const AuthenticationContext = createContext<ContextProps>({
  */
 export function AuthenticationContextProvider({ children }: any) {
   const [authenticated, setAuthenticated] = useState(false);
-  const memoContext = useMemo(() => (
-    { authenticated, setAuthenticated }), [authenticated, setAuthenticated]);
+  const [authenticationLoading, setAuthenticationLoading] = useState(true);
+
+  /**
+   * Check if the user is authenticated by performing an API call to a mock api,
+   * then update the authenticated state in the context api
+   */
+  const checkIfAuthenticated = () => {
+    setAuthenticationLoading(true);
+    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}api/authenticated`)
+      .then((response) => response.json())
+      .then((data) => {
+        setAuthenticationLoading(false);
+        setAuthenticated(data.authenticated);
+      })
+      .catch((error) => {
+        console.warn(error);
+        setAuthenticationLoading(false);
+        setAuthenticated(false);
+      });
+  };
+
+  // Only check if authenticated on first load
+  useEffect(() => {
+    checkIfAuthenticated();
+  }, []);
+
+  const memoContext = useMemo(
+    () => (
+      {
+        authenticated, setAuthenticated, authenticationLoading, setAuthenticationLoading,
+      }
+    ),
+    [authenticated, setAuthenticated, authenticationLoading, setAuthenticationLoading],
+  );
 
   return (
     <AuthenticationContext.Provider value={memoContext}>

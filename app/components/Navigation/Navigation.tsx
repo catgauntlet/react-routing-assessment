@@ -1,15 +1,14 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuthenticationContext } from '@/app/context/authentication.tsx';
 import styles from './Navigation.module.css';
 
 export default function Navigation() {
   const router = useRouter();
-  const { authenticated, setAuthenticated } = useAuthenticationContext();
+  const { authenticated, setAuthenticated, authenticationLoading } = useAuthenticationContext();
   const [logoutLoading, setLogoutLoading] = useState(false);
-  const [authenticationLoading, setAuthenticationLoading] = useState(true);
 
   /**
    * On logout clicked click, perform a call to the mock api,
@@ -36,29 +35,6 @@ export default function Navigation() {
   const onLoginClicked = () => {
     router.push('/login');
   };
-
-  /**
-   * Check if the user is authenticated by performing an API call to a mock api,
-   * then update the authenticated state in the context api
-   */
-  const checkIfAuthenticated = () => {
-    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}api/authenticated`)
-      .then((response) => response.json())
-      .then((data) => {
-        setAuthenticationLoading(false);
-        setAuthenticated(data.authenticated);
-      })
-      .catch((error) => {
-        console.warn(error);
-        setAuthenticationLoading(false);
-        setAuthenticated(false);
-      });
-  };
-
-  // Only check if authenticated on first load
-  useEffect(() => {
-    checkIfAuthenticated();
-  }, []);
 
   return (
     <nav className={styles.navigation}>
