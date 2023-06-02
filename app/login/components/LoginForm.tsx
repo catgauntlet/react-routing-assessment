@@ -40,7 +40,7 @@ export default function LoginForm() {
           setAuthenticated(true);
           const urlParams = new URLSearchParams(window.location.search);
           const target = urlParams.get('target');
-          router.push(target || '/dashboard', { shallow: true });
+          router.push(target || '/dashboard');
         }
       })
       .catch((error) => {
@@ -54,11 +54,11 @@ export default function LoginForm() {
   /**
    * On login submit, get the values from the form and perform the login fetch
    */
-  const onLoginFormSubmit = () => {
-    const username = document.querySelector('#username').value;
-    const password = document.querySelector('#password').value;
-
-    performLoginFetch(username, password);
+  const onLoginFormSubmit = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    const username = document.getElementById('username') as HTMLInputElement;
+    const password = document.getElementById('password') as HTMLInputElement;
+    performLoginFetch(username.value, password.value);
   };
 
   return (
@@ -79,7 +79,7 @@ export default function LoginForm() {
           </span>
         )
       }
-      <button type="submit" onClick={() => onLoginFormSubmit()} disabled={loginLoading}>Submit</button>
+      <button type="submit" onClick={(e) => onLoginFormSubmit(e)} disabled={loginLoading}>Submit</button>
     </form>
   );
 }

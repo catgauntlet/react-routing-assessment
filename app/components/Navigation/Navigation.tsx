@@ -21,7 +21,7 @@ export default function Navigation() {
       .then(() => {
         setLogoutLoading(false);
         setAuthenticated(false);
-        router.push('/', { shallow: true });
+        router.push('/');
       })
       .catch((error) => {
         console.warn(error);

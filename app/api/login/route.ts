@@ -8,6 +8,7 @@ interface LoginRequestBody {
 /**
  * A simple api call to mock login and return a mock token
  */
+// eslint-disable-next-line
 export async function POST(request: Request) {
   const requestBody = await request.json() as LoginRequestBody;
 
@@ -27,5 +28,3 @@ export async function POST(request: Request) {
 
   return response;
 }
-
-export default POST;

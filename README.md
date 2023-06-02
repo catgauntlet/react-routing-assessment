@@ -30,12 +30,29 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Building and hosting for production
+
+You can run and then host a local production build with:
+
+```bash
+yarn run build
+yarn run start
+```
+
+This builds the application with tree shaking, minimizing all the other optimalisations expected in a production build.
+
 ## Tests
 
-You can run the tests by running:
+You can run the cypress e2e tests headlessly by first making sure that the dev environment is running and then running:
 
 ```bash
 yarn run test
+```
+
+You can also run the Cypress UI to see the tests visualized with:
+
+```bash
+yarn run cypress
 ```
 
 ## Decision Log
@@ -56,7 +73,7 @@ Next to the default airbnb + react + next recommended linting sets, I modified o
 
 Initially I chose Jest as a testing library, because it assertions and mocking tools like Sinon built in, it's popular nowadays, which means that it is easy to pick up for other developers as well and there is loads of guides/tutorials available.
 
-During development however,
+During development however, I figured out that the time needed to implement Jest with a Server Side Rendered application with session cookies, meant a lot of time lost on mocking all side dependencies, so I decided to go for e2e tests with cypress (luckily also recommended by Next.js) to test the general flow of the application.
 
 ### Git hooks
 
@@ -72,7 +89,7 @@ I added some initial variables in the globals.css which could be extended using 
 
 ### Total time spent
 
-I like to be transparent in the amount of time spent on this, which was 7 hours. I lost some time configuring Jest to play nice with my setup, which it wouldn't since I'm working with a Server Side Rendered application and session cookies, this meant a lot of time lost on mocking all side dependencies, so I decided to go for e2e tests with cypress (luckily also recommended by Next.js) to test the general flow of the application. I then converted all of my Jest tests to Cypress and ran that headlesly pre-push
+I like to be transparent in the amount of time spent on this, which was 7,5 hours. I spent some extra time configuring Jest to play nice with my setup, and then converting all my tests to Cypress.
 
 ## Links
 
