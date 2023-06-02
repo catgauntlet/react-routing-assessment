@@ -39,6 +39,12 @@ Next to the default airbnb + react + next recommended linting sets, I modified o
 
 I chose Jest, because it has assertions and mocking tools like Sinon built in, it's popular nowadays, which means that it is easy to pick up for other developers as well and there is loads of guides/tutorials available.
 
+Next to Jest I added testing-library/react which is the recommended testing library by React itself and Next.js. It allows you to render the DOM of React components, and gives you the ability to query their contents just as a user of the browser would, enabling straightforward and readable testing.
+
 ### Git hooks
 
 I opted to use Husky for pre-commit linting and pre-push test running, since it is still the most used git hooks library around. I doubted on using Lefthook, which is supposed to be faster, but the support and usage of Husky is at this point still much better online.
+
+
+## Links
+
