@@ -1,0 +1,4 @@
+.navigation {
+	padding: var(--spacer);	
+	box-shadow: 0px 10px 25px var(--color-brand-grey);
+}

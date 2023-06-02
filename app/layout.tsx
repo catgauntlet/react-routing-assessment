@@ -1,5 +1,6 @@
 import React from 'react';
 import './globals.css';
+import Navigation from './components/Navigation.tsx';
 
 export const metadata = {
   title: 'React Routing Assessment',
@@ -13,7 +14,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Navigation />
+        <main>
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
