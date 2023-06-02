@@ -66,9 +66,13 @@ I opted to use Husky for pre-commit linting and pre-push test running, since it 
 
 Since most of the application is rendered on the server side, and React state management takes place on the client side, there is little state management. I use useState in the client side components like the login form and navigation bar to keep the loading state of the form and request and to store errors. Between the client side components, I use the Context API to share the authentication state to different menu items if you're logged in.
 
+### Design setup
+
+I added some initial variables in the globals.css which could be extended using a design system, library like tailwind/bulma or could for instance be replaced by figma design tokens.
+
 ### Total time spent
 
-I like to be transparent in the amount of time spent on this, which was 5,5 hours. I lost some time configuring Jest to play nice, so I could write the tests.
+I like to be transparent in the amount of time spent on this, which was 6,5 hours. I lost some time configuring Jest to play nice, so I could write the tests.
 
 ## Links
 

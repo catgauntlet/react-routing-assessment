@@ -42,3 +42,22 @@ h2 {
 span, p {
   font-size: var(--font-size-xs);
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  align-items: center;
+  justify-content: center;
+}
+
+form button,
+form input,
+form label {
+  width: 100%;
+}
+
+form label,
+form label span {
+  padding-bottom: var(--spacer);
+}

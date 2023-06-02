@@ -39,8 +39,8 @@ export default function Navigation() {
   return (
     <nav className={styles.navigation}>
       <section className={styles.menuItems}>
-        <a href="/">Home</a>
-        {(authenticated) && <a href="/dashboard">Dashboard</a>}
+        <a className={styles.item} href="/">Home</a>
+        {(authenticated) && <a className={styles.item} href="/dashboard">Dashboard</a>}
       </section>
       <section className={styles.authentication}>
         {(!authenticated && !authenticationLoading) && <button type="button" onClick={onLoginClicked}>Log in</button>}

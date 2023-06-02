@@ -64,12 +64,12 @@ export default function LoginForm() {
   return (
     <form>
       <label htmlFor="username">
+        <span>Username</span>
         <input type="text" id="username" name="username" aria-label="username" required />
-        Username
       </label>
       <label htmlFor="password">
+        <span>Password</span>
         <input type="password" id="password" name="password" aria-label="password" required />
-        Password
       </label>
       {
         (loginError) && (
