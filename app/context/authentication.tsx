@@ -14,6 +14,10 @@ const AuthenticationContext = createContext<ContextProps>({
   setAuthenticated: (): boolean => false,
 });
 
+/**
+ * A context provider for sharing the authentication state
+ * between client side components that need it
+ */
 export function AuthenticationContextProvider({ children }: any) {
   const [authenticated, setAuthenticated] = useState(false);
   const memoContext = useMemo(() => (

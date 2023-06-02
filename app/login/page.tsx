@@ -9,8 +9,9 @@ export default function Login() {
   const nextCookies = cookies();
   const authentication = nextCookies.get('authentication');
 
+  // If we are already logged in, navigate to the dashboard
   if (authentication) {
-    redirect('/');
+    redirect('/dashboard');
   }
 
   return (

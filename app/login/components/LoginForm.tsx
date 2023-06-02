@@ -10,6 +10,12 @@ export default function LoginForm() {
   const [loginLoading, setLoginLoading] = useState(false);
   const [loginError, setLoginError] = useState(null);
 
+  /**
+   * Perform the login fetch POST to the mock API, which will return authenticated: true
+   * and a cookie if the correct credentials are filled in
+   * If logged in correclty, update the state and navigate to the target page
+   * from the query or to dashboard as a fallback
+   */
   const performLoginFetch = (username: String, password: String) => {
     let requestResultedInErrorCode = false;
     setLoginLoading(true);
@@ -45,6 +51,9 @@ export default function LoginForm() {
       });
   };
 
+  /**
+   * On login submit, get the values from the form and perform the login fetch
+   */
   const onLoginFormSubmit = () => {
     const username = document.querySelector('#username').value;
     const password = document.querySelector('#password').value;
