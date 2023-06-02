@@ -17,6 +17,11 @@ yarn set version berry
 yarn install
 ```
 
+Create a `.env.local` file (gitignored so it can be configurable and contain local tokens etc.) containing the following:
+
+```
+NEXT_PUBLIC_API_BASE_URL='http://localhost:3000/'
+
 Then you can run, the development server on port 3000 with:
 
 ```bash

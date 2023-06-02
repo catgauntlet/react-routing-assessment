@@ -1,6 +1,6 @@
 import React from 'react';
 import './globals.css';
-import Navigation from './components/Navigation.tsx';
+import Navigation from './components/Navigation/Navigation.tsx';
 
 export const metadata = {
   title: 'React Routing Assessment',
