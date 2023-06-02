@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuthenticationContext } from '@/app/context/authentication.tsx';
 import styles from './Navigation.module.css';
@@ -20,7 +21,7 @@ export default function Navigation() {
       .then(() => {
         setLogoutLoading(false);
         setAuthenticated(false);
-        router.push('/');
+        router.push('/', { shallow: true });
       })
       .catch((error) => {
         console.warn(error);
@@ -39,8 +40,8 @@ export default function Navigation() {
   return (
     <nav className={styles.navigation}>
       <section className={styles.menuItems}>
-        <a className={styles.item} href="/">Home</a>
-        {(authenticated) && <a className={styles.item} href="/dashboard">Dashboard</a>}
+        <Link className={styles.item} href="/">Home</Link>
+        {(authenticated) && <Link className={styles.item} href="/dashboard">Dashboard</Link>}
       </section>
       <section className={styles.authentication}>
         {(!authenticated && !authenticationLoading) && <button type="button" onClick={onLoginClicked}>Log in</button>}

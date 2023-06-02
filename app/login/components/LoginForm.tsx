@@ -40,7 +40,7 @@ export default function LoginForm() {
           setAuthenticated(true);
           const urlParams = new URLSearchParams(window.location.search);
           const target = urlParams.get('target');
-          router.push(target || '/dashboard');
+          router.push(target || '/dashboard', { shallow: true });
         }
       })
       .catch((error) => {
