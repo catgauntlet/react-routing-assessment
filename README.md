@@ -72,7 +72,7 @@ I added some initial variables in the globals.css which could be extended using 
 
 ### Total time spent
 
-I like to be transparent in the amount of time spent on this, which was 6,5 hours. I lost some time configuring Jest to play nice, so I could write the tests.
+I like to be transparent in the amount of time spent on this, which was 7 hours. I lost some time configuring Jest to play nice, so I could write the tests.
 
 ## Links
 
