@@ -54,9 +54,9 @@ Next to the default airbnb + react + next recommended linting sets, I modified o
 
 ### Testing framework
 
-I chose Jest, because it has assertions and mocking tools like Sinon built in, it's popular nowadays, which means that it is easy to pick up for other developers as well and there is loads of guides/tutorials available.
+Initially I chose Jest as a testing library, because it assertions and mocking tools like Sinon built in, it's popular nowadays, which means that it is easy to pick up for other developers as well and there is loads of guides/tutorials available.
 
-Next to Jest I added testing-library/react which is the recommended testing library by React itself and Next.js. It allows you to render the DOM of React components, and gives you the ability to query their contents just as a user of the browser would, enabling straightforward and readable testing.
+During development however,
 
 ### Git hooks
 
@@ -72,7 +72,7 @@ I added some initial variables in the globals.css which could be extended using 
 
 ### Total time spent
 
-I like to be transparent in the amount of time spent on this, which was 7 hours. I lost some time configuring Jest to play nice, so I could write the tests.
+I like to be transparent in the amount of time spent on this, which was 7 hours. I lost some time configuring Jest to play nice with my setup, which it wouldn't since I'm working with a Server Side Rendered application and session cookies, this meant a lot of time lost on mocking all side dependencies, so I decided to go for e2e tests with cypress (luckily also recommended by Next.js) to test the general flow of the application. I then converted all of my Jest tests to Cypress and ran that headlesly pre-push
 
 ## Links
 

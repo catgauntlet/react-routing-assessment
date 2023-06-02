@@ -40,12 +40,12 @@ export default function Navigation() {
   return (
     <nav className={styles.navigation}>
       <section className={styles.menuItems}>
-        <Link className={styles.item} href="/">Home</Link>
-        {(authenticated) && <Link className={styles.item} href="/dashboard">Dashboard</Link>}
+        <Link id="homeLink" className={styles.item} href="/">Home</Link>
+        {(authenticated) && <Link id="dashboardLink" className={styles.item} href="/dashboard">Dashboard</Link>}
       </section>
       <section className={styles.authentication}>
-        {(!authenticated && !authenticationLoading) && <button type="button" onClick={onLoginClicked}>Log in</button>}
-        {(authenticated && !authenticationLoading) && <button type="button" onClick={onLogOutClicked} disabled={logoutLoading}>Log out</button>}
+        {(!authenticated && !authenticationLoading) && <button id="loginButton" type="button" onClick={onLoginClicked}>Log in</button>}
+        {(authenticated && !authenticationLoading) && <button id="logoutButton" type="button" onClick={onLogOutClicked} disabled={logoutLoading}>Log out</button>}
       </section>
     </nav>
   );
