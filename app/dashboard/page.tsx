@@ -3,7 +3,7 @@ import guardAuthenticatedRoute from '@/app/utils/authenticated-route.ts';
 import styles from './page.module.css';
 
 export default function DashboardPage() {
-  guardAuthenticatedRoute();
+  guardAuthenticatedRoute('dashboard');
 
   return (
     <section className={styles.dashBoardPage}>

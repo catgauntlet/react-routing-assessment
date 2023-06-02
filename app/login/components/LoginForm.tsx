@@ -27,7 +27,9 @@ export default function LoginForm() {
         if (requestResultedInErrorCode) {
           setLoginError(data.error);
         } else {
-          router.push('/dashboard');
+          const urlParams = new URLSearchParams(window.location.search);
+          const target = urlParams.get('target');
+          router.push(target || '/dashboard');
         }
       })
       .catch((error) => {
