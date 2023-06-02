@@ -30,9 +30,21 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Tests
+
+You can run the tests by running:
+
+```bash
+yarn run test
+```
+
 ## Decision Log
 
 In this section you can find some explanation on the decisions during the process.
+
+### Rendering
+
+The application is set up in a way that supports Server Side Rendering for large static parts, combined with locally rendered client side that support user input. In this case that is the dynamic navigation bar and login form. This way there is as little Javascript as necessary performed on the client side.
 
 ### Linting
 
@@ -50,6 +62,13 @@ Next to Jest I added testing-library/react which is the recommended testing libr
 
 I opted to use Husky for pre-commit linting and pre-push test running, since it is still the most used git hooks library around. I doubted on using Lefthook, which is supposed to be faster, but the support and usage of Husky is at this point still much better online.
 
+### State management
+
+Since most of the application is rendered on the server side, and React state management takes place on the client side, there is little state management. I use useState in the client side components like the login form and navigation bar to keep the loading state of the form and request and to store errors. I dabbled in using the context API for the state of authentication, but because we catch the authentication guard on the server side, protecting it from the client, there was no need for it.
+
+### Total time spent
+
+I like to be transparent in the amount of time spent on this, which was 4,5 hours. I lost some time configuring Jest to play nice, so I could write the tests.
 
 ## Links
 
