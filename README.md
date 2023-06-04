@@ -62,7 +62,9 @@ You can also run the Cypress UI to see the tests visualized with:
 yarn run cypress
 ```
 
-Both the unit tests and the e2e test are ran pre-push, but you need to have the dev enviroment running for them to pass, since it needs to access localhost.
+Cypress e2e tests can be found under `cypress` and Jest Unit Tests can be found under `tests`.
+
+Both the unit tests and the e2e test are ran pre-push, but you need to have the dev enviroment running for the e2e tests to pass, since it needs to access localhost. I kept that for now, in a real scenario those would fire up the application in the background as a deamon so it's not a blocker.
 
 ## Decision Log
 
@@ -80,6 +82,10 @@ To set up the project I started with: [Create Next App](https://nextjs.org/docs/
 
 The application is be written in Typescript, since it makes debugging painless and it couples well with the refactoring-approach of the TDD way of working. 
 
+### Mock API
+
+I added mock API routes, which run on the server side and are accessible through `/api` they provide authentication states and login/logout calls based on a cookie saved on the client side and automatically sent with every request through the browser.
+
 ### Linting
 
 For linting I use ESlint through Nextjs, which uses the default .eslintrc, next to that I added Husky as a pre-commit hook to enforce the linting.
@@ -92,7 +98,7 @@ Initially I chose Jest as a testing library, because it assertions and mocking t
 
 During development however, I figured out that the time needed to implement Jest with a Server Side Rendered application with session cookies, meant a lot of time lost on mocking all side dependencies, so I decided to go for e2e tests with cypress (luckily also recommended by Next.js) to test the general flow of the application.
 
-I kept the Jest tests to just the utility file for the route guard.
+I reintroduced the Jest tests later just for the utility method for the route guard.
 
 ### Git hooks
 
@@ -100,19 +106,15 @@ I opted to use Husky for pre-commit linting and pre-push test running, since it 
 
 ### State management
 
-Since most of the application is rendered on the server side, and React state management takes place on the client side, there is little state management. I use useState in the client side components like the login form and navigation bar to keep the loading state of the form and request and to store errors. Between the client side components, I use the Context API to share the authentication state to different menu items if you're logged in.
+Since most of the application is rendered on the server side, and React state management takes place on the client side, state management is limited. I use useState in the client side components like the login form and navigation bar to keep the loading state of the form and request and to store errors. Between the client side components,I use the Context API to share the authentication state to different menu items if you're logged in and to display the username component.
 
 ### Design setup
 
 I added some initial variables in the globals.css which could be extended using a design system, library like tailwind/bulma or could for instance be replaced by figma design tokens.
 
-## Things I would improve upon in a real scenario
-
-Regarding testing, I would implement Jest unit tests for the utils and components next to the function e2e tests in Cypress, to dive a little deeper. Setting up all the depency mocks was too much work for this scenario. Next to that, regarding the test run in push, I would run a production build, then serve it as a deamon process in the background so the dependency on the dev server is solved.
-
 ## Total time spent
 
-I like to be transparent in the amount of time spent on this, which was 9 hours. Half of this was spent attempting to configure Jest properly, mocking dependencies and getting it to work with the components, before switching to Cypress and converting all my tests except the utility tests (which are in Jest) to functional e2e tests.
+I like to be transparent in the amount of time spent on this, which was 9 hours. Roughly half of this was spent attempting to configure Jest properly to work with the SSR, mocking dependencies and getting it to work with the components, before switching to Cypress and converting all my tests except the utility tests (which are still in Jest) to functional e2e tests.
 
 ## Tech used with links
 
@@ -125,6 +127,3 @@ I like to be transparent in the amount of time spent on this, which was 9 hours.
 - [Jest](https://jestjs.io/)
 - [Cypress](https://www.cypress.io/)
 - [Husky](https://typicode.github.io/husky)
-
-## Links
-
