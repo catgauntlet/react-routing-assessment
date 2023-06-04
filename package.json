@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest",
+    "test": "yarn run test:unit && yarn run test:e2e",
+    "test:unit": "jest",
     "test:e2e": "cypress run --browser chrome",
     "cypress": "cypress open"
   },
@@ -33,7 +34,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "yarn run lint",
-      "pre-push": "yarn run test && yarn run test:e2e"
+      "pre-push": "yarn run test"
     }
   },
   "main": "index.js",

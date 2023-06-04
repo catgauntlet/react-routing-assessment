@@ -47,13 +47,19 @@ This builds the application with tree shaking, minimizing all the other optimali
 You can run the Jest unit tests by running:
 
 ```bash
-yarn run test
+yarn run test:unit
 ```
 
 You can run the cypress e2e tests headlessly by first making sure that the dev environment is running and then running:
 
 ```bash
 yarn run test:e2e
+```
+
+You can run both the unit and e2e tests after each other in one command with:
+
+```bash
+yarn run test
 ```
 
 You can also run the Cypress UI to see the tests visualized with:
