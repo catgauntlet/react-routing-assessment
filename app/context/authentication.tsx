@@ -39,7 +39,7 @@ export function AuthenticationContextProvider({ children }: any) {
         setAuthenticated(data.authenticated);
       })
       .catch((error) => {
-        console.warn(error);
+        console.warn(error); // eslint-disable-line
         setAuthenticationLoading(false);
         setAuthenticated(false);
       });

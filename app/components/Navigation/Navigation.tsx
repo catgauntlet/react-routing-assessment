@@ -24,7 +24,7 @@ export default function Navigation() {
         router.push('/');
       })
       .catch((error) => {
-        console.warn(error);
+        console.warn(error); // eslint-disable-line
         setAuthenticated(false);
         setLogoutLoading(false);
       });

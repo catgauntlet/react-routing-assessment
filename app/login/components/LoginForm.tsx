@@ -45,7 +45,7 @@ export default function LoginForm() {
         }
       })
       .catch((error) => {
-        console.warn(error);
+        console.warn(error); // eslint-disable-line
         setLoginError(error);
         setLoginLoading(false);
         setAuthenticated(false);
