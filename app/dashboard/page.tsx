@@ -7,7 +7,7 @@ export default function DashboardPage() {
   guardServerSideAuthenticatedRoute('dashboard');
 
   return (
-    <section className={styles.dashBoardPage}>
+    <section className={styles.dashboardPage}>
       <h1>Logged in Dashboard</h1>
       <UserName />
     </section>

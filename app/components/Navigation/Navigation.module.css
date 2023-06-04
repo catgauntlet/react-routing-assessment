@@ -3,9 +3,23 @@
 	flex-direction: row;
 	justify-content: space-between;
 	padding: var(--spacer);	
-	box-shadow: 0px 10px 25px var(--color-brand-grey);
+	border-bottom: 1px solid var(--color-grey);
+}
+
+.menuItems {
+	align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
 .item {
 	padding: var(--spacer);
+	color: #464141;
+	text-decoration: none;
+	transition: color 0.3s ease-in-out;
+}
+
+.item:hover {
+	color: #c33;
+	text-decoration: underline;
 }

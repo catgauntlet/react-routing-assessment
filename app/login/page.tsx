@@ -10,6 +10,7 @@ export default function Login() {
   const authentication = nextCookies.get('authentication');
 
   // If we are already logged in, navigate to the dashboard
+  // this is not a util because its only for the login page
   if (authentication) {
     redirect('/dashboard');
   }

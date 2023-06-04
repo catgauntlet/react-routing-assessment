@@ -1,22 +1,37 @@
+@font-face {
+  font-family: 'Roboto-Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Roboto-Regular-webfont'), url('../public/fonts/Roboto-Regular-webfont.woff') format('woff');
+}
+
 :root {
+  --font-main: 'Roboto-Regular';
+
   --font-size-xs: 0.75rem;
   --font-size-s: 0.875rem;
   --font-size-m: 1.25rem;
 
   --spacer: 0.5rem;
+  --spacer-l: 1rem;
 
-  --color-background: #FFFFFF;
-  --color-brand: #000000;
-  --color-brand-grey: #999999;
+  --border-radius-m: 0.75rem;
 
-  --color-text-primary: var(--color-brand);
+  --color-primary-brand: #058C42;
+  --color-grey: #999999;
+  --color-black: #000;
+  --color-white: #FFFFFF;
+  --color-error: #8B0000;
+
+  --color-background: var(--white);
+  --color-text-primary: var(--color-black);
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -26,7 +41,15 @@ body {
   background: var(--color-background);
 }
 
-h1, h2, span, p {
+main {
+  padding: var(--spacer-l);
+}
+
+h1,
+h2,
+span,
+a,
+p {
   font-family: var(--font-main);
   padding: var(--spacer) 0;
 }
@@ -39,14 +62,19 @@ h2 {
   font-size: var(--font-size-s);
 }
 
-span, p {
+span,
+p {
   font-size: var(--font-size-xs);
+}
+
+.error {
+  color: var(--color-error);
 }
 
 form {
   display: flex;
   flex-direction: column;
-  max-width: 400px;
+  width: 400px;
   align-items: center;
   justify-content: center;
 }
@@ -60,4 +88,37 @@ form label {
 form label,
 form label span {
   padding-bottom: var(--spacer);
+}
+
+form button {
+  margin-top: var(--spacer-l);
+}
+
+button {
+  min-width: 100px;
+  padding: var(--spacer);
+  background: var(--color-primary-brand);
+  outline: none;
+  border: 1px solid var(--color-primary-brand);
+  border-radius: var(--border-radius-m);
+  color: var(--color-white);
+  transition: 0.1s color ease-in-out, 0.1s background-color ease-in-out;
+  cursor: pointer;
+}
+
+button:hover {
+  background: transparent;
+  color: var(--color-primary-brand);
+}
+
+label span {
+  display: inline-block;
+  padding-bottom: var(--spacer);
+}
+
+input {
+  padding: var(--spacer);
+  outline: none;
+  border: 1px solid var(--color-grey);
+  border-radius: var(--border-radius-m);
 }

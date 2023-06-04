@@ -66,6 +66,14 @@ In this section you can find some explanation on the decisions during the proces
 
 The application is set up in a way that supports Server Side Rendering for large static parts, combined with locally rendered client side that support user input. In this case that is the dynamic navigation bar and login form. This way there is as little Javascript as necessary performed on the client side.
 
+### Next and Typescript
+
+I created the assessment using Next.js as a React framework, which takes away a lot of the work needed, it provides SSR routing, is lightweight, scalable, has important quality of life dependencies like PostCSS built in and can handle things like authenticated routes easily. Next to this I will only be adding minimal dependencies as needed, for instance for testing.
+
+To set up the project I started with: [Create Next App](https://nextjs.org/docs/pages/api-reference/create-next-app)
+
+The application is be written in Typescript, since it makes debugging painless and it couples well with the refactoring-approach of the TDD way of working. 
+
 ### Linting
 
 For linting I use ESlint through Nextjs, which uses the default .eslintrc, next to that I added Husky as a pre-commit hook to enforce the linting.
@@ -96,7 +104,7 @@ Regarding testing, I would implement Jest unit tests for the utils and component
 
 ## Total time spent
 
-I like to be transparent in the amount of time spent on this, which was 8 hours. I spent some extra time configuring Jest to play nice with my setup, and then converting all my tests to Cypress.
+I like to be transparent in the amount of time spent on this, which was 8,5 hours. Half of this was spent attempting to configure Jest properly, mocking dependencies and getting it to work with the components, before switching to Cypress and converting all my tests functional e2e tests.
 
 ## Tech used with links
 

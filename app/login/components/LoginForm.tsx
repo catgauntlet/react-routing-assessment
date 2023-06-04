@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+
 import { useAuthenticationContext } from '@/app/context/authentication.tsx';
 
 export default function LoginForm() {
@@ -53,6 +54,7 @@ export default function LoginForm() {
 
   /**
    * On login submit, get the values from the form and perform the login fetch
+   * if there was extra form validation, this is also were it would take place
    */
   const onLoginFormSubmit = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
@@ -73,7 +75,7 @@ export default function LoginForm() {
       </label>
       {
         (loginError) && (
-          <p id="loginErrorMessage">
+          <p id="loginErrorMessage" className="error">
             This does not ring a bell with us.
             please make sure you filled in the right login information.
           </p>
