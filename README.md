@@ -44,10 +44,16 @@ This builds the application with tree shaking, minimizing all the other optimali
 
 ## Tests
 
-You can run the cypress e2e tests headlessly by first making sure that the dev environment is running and then running:
+You can run the Jest unit tests by running:
 
 ```bash
 yarn run test
+```
+
+You can run the cypress e2e tests headlessly by first making sure that the dev environment is running and then running:
+
+```bash
+yarn run test:e2e
 ```
 
 You can also run the Cypress UI to see the tests visualized with:
@@ -56,7 +62,7 @@ You can also run the Cypress UI to see the tests visualized with:
 yarn run cypress
 ```
 
-The tests are also ran pre-push, but you need to have the dev enviroment running for them to pass, since it needs to access localhost.
+Both the unit tests and the e2e test are ran pre-push, but you need to have the dev enviroment running for them to pass, since it needs to access localhost.
 
 ## Decision Log
 
@@ -86,6 +92,8 @@ Initially I chose Jest as a testing library, because it assertions and mocking t
 
 During development however, I figured out that the time needed to implement Jest with a Server Side Rendered application with session cookies, meant a lot of time lost on mocking all side dependencies, so I decided to go for e2e tests with cypress (luckily also recommended by Next.js) to test the general flow of the application.
 
+I kept the Jest tests to just the utility file for the route guard.
+
 ### Git hooks
 
 I opted to use Husky for pre-commit linting and pre-push test running, since it is still the most used git hooks library around. I doubted on using Lefthook, which is supposed to be faster, but the support and usage of Husky is at this point still much better online.
@@ -104,15 +112,17 @@ Regarding testing, I would implement Jest unit tests for the utils and component
 
 ## Total time spent
 
-I like to be transparent in the amount of time spent on this, which was 8,5 hours. Half of this was spent attempting to configure Jest properly, mocking dependencies and getting it to work with the components, before switching to Cypress and converting all my tests functional e2e tests.
+I like to be transparent in the amount of time spent on this, which was 9 hours. Half of this was spent attempting to configure Jest properly, mocking dependencies and getting it to work with the components, before switching to Cypress and converting all my tests except the utility tests (which are in Jest) to functional e2e tests.
 
 ## Tech used with links
 
 - [React 18.2.x](https://react.dev/)
+- [Yarn](https://yarnpkg.com/)
 - [Nextjs 13.4.x](https://nextjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
 - [PostCSS](https://postcss.org/)
 - [ESlint with React/Airbnb standards](https://eslint.org/)
+- [Jest](https://jestjs.io/)
 - [Cypress](https://www.cypress.io/)
 - [Husky](https://typicode.github.io/husky)
 

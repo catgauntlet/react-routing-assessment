@@ -1,5 +1,5 @@
 import React from 'react';
-import guardServerSideAuthenticatedRoute from '@/app/utils/server-side-authenticated-route.ts';
+import guardServerSideAuthenticatedRoute from '@/app/utils/authenticated-route.ts';
 import styles from './page.module.css';
 import UserName from './components/UserName.tsx';
 
