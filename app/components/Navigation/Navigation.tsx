@@ -17,7 +17,7 @@ export default function Navigation() {
    */
   const onLogOutClicked = () => {
     setLogoutLoading(true);
-    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}api/logout`)
+    fetch('/api/logout')
       .then(() => {
         setLogoutLoading(false);
         setAuthenticated(false);

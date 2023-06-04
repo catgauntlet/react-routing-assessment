@@ -26,7 +26,7 @@ export default function LoginForm() {
       body: JSON.stringify({ username, password }),
     };
 
-    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}api/login`, requestOptions)
+    fetch('api/login', requestOptions)
       .then((response) => {
         setLoginLoading(false);
         if (response.status !== 200) {
@@ -73,13 +73,13 @@ export default function LoginForm() {
       </label>
       {
         (loginError) && (
-          <span>
+          <p id="loginErrorMessage">
             This does not ring a bell with us.
             please make sure you filled in the right login information.
-          </span>
+          </p>
         )
       }
-      <button type="submit" onClick={(e) => onLoginFormSubmit(e)} disabled={loginLoading}>Submit</button>
+      <button id="loginFormSubmit" type="submit" onClick={(e) => onLoginFormSubmit(e)} disabled={loginLoading}>Submit</button>
     </form>
   );
 }

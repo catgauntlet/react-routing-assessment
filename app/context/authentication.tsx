@@ -32,7 +32,7 @@ export function AuthenticationContextProvider({ children }: any) {
    */
   const checkIfAuthenticated = () => {
     setAuthenticationLoading(true);
-    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}api/authenticated`)
+    fetch('api/authenticated')
       .then((response) => response.json())
       .then((data) => {
         setAuthenticationLoading(false);

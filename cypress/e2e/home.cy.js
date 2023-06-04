@@ -19,12 +19,4 @@ describe('Home - Happy flows', () => {
     cy.get('#logoutButton').should('exist');
     cy.get('#loginButton').should('not.exist');
   });
-
-  it('When I load the homepage when I am logged in, I expect the logout button to be available and take me to the logged out state of the home page, I expect the token to be gone', () => {
-    cy.visit('http://localhost:3000/');
-
-    cy.get('#loginButton').should('exist');
-    cy.get('nav').get('#loginButton').click();
-
-  });
 });

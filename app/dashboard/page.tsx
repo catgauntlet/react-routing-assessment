@@ -1,10 +1,10 @@
 import React from 'react';
-import guardAuthenticatedRoute from '@/app/utils/authenticated-route.ts';
+import guardServerSideAuthenticatedRoute from '@/app/utils/server-side-authenticated-route.ts';
 import styles from './page.module.css';
 import UserName from './components/UserName.tsx';
 
 export default function DashboardPage() {
-  guardAuthenticatedRoute('dashboard');
+  guardServerSideAuthenticatedRoute('dashboard');
 
   return (
     <section className={styles.dashBoardPage}>

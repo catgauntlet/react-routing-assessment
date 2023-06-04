@@ -1,5 +1,7 @@
 ## Running the project
 
+For this project I assume the developer has nvm (node version manager) installed on their machine, if not, the installation instructions can be found [here](https://github.com/nvm-sh/nvm#installing-and-updating)
+
 To get started you first have to make sure you have the proper version of node installed (this uses installs and uses the LTS version of node defined in the nvmrc):
 
 ```bash
@@ -17,11 +19,6 @@ yarn set version berry
 yarn install
 ```
 
-Create a `.env.local` file (gitignored so it can be configurable and contain local tokens etc.) containing the following:
-
-```
-NEXT_PUBLIC_API_BASE_URL='http://localhost:3000/'
-
 Then you can run, the development server on port 3000 with:
 
 ```bash
@@ -29,6 +26,10 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Logging in
+
+For this assessment you can log in with the following test credentials: `uncinc` `letmein` 
 
 ## Building and hosting for production
 
@@ -54,6 +55,8 @@ You can also run the Cypress UI to see the tests visualized with:
 ```bash
 yarn run cypress
 ```
+
+The tests are also ran pre-push, but you need to have the dev enviroment running for them to pass, since it needs to access localhost.
 
 ## Decision Log
 
@@ -87,9 +90,23 @@ Since most of the application is rendered on the server side, and React state ma
 
 I added some initial variables in the globals.css which could be extended using a design system, library like tailwind/bulma or could for instance be replaced by figma design tokens.
 
-### Total time spent
+## Things I would improve upon in a real scenario
 
-I like to be transparent in the amount of time spent on this, which was 7,5 hours. I spent some extra time configuring Jest to play nice with my setup, and then converting all my tests to Cypress.
+Regarding testing, I would implement Jest unit tests for the utils and components next to the function e2e tests in Cypress, to dive a little deeper. Setting up all the depency mocks was too much work for this scenario. Next to that, regarding the test run in push, I would run a production build, then serve it as a deamon process in the background so the dependency on the dev server is solved.
+
+## Total time spent
+
+I like to be transparent in the amount of time spent on this, which was 8 hours. I spent some extra time configuring Jest to play nice with my setup, and then converting all my tests to Cypress.
+
+## Tech used with links
+
+- [React 18.2.x](https://react.dev/)
+- [Nextjs 13.4.x](https://nextjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [PostCSS](https://postcss.org/)
+- [ESlint with React/Airbnb standards](https://eslint.org/)
+- [Cypress](https://www.cypress.io/)
+- [Husky](https://typicode.github.io/husky)
 
 ## Links
 
