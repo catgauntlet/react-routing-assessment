@@ -38,7 +38,7 @@ describe('Tests for Authenticated Routes', () => {
     expect(redirect).toHaveBeenCalledTimes(1);
   });
 
-  it('When the route guard is fired, and there is no authentication cookie, expect redirect to be called', () => {
+  it('When the route guard is fired, and there is an authentication cookie, expect redirect not to be called', () => {
     getCookieMock.mockImplementation(() => {
       return 'test';
     });
